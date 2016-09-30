@@ -8,8 +8,8 @@
 		
 		public static function run(Request $request)
 		{
-			$controlador = $request->getControlador() . "Controller";
-			$ruta = ROOT . "Controllers" . DS . $controlador . ".php";
+			$controlador = $request->getControlador() . "Control";
+			$ruta = ROOT . "Controladores" . DS . $controlador . ".php";
 			$metodo = $request->getMetodo();
 			if ($metodo == "index.php") {
 				$metodo = "index";
@@ -17,7 +17,7 @@
 			$argumento = $request->getArgumento();
 			if (is_readable($ruta)) {
 				require_once $ruta;
-				$mostrar = "Controllers\\" . $controlador;
+				$mostrar = "Controladores\\" . $controlador;
 				$controlador = new $mostrar;
 				if (!isset($argumento)) {
 					$datos = call_user_func(array($controlador, $metodo));
@@ -27,11 +27,11 @@
 			}
 			
 			//Cargar vista
-			$ruta = ROOT . "Views" . DS . $request->getControlador() . DS . $request->getMetodo() . ".php";
+			$ruta = ROOT . "Vistas" . DS . $request->getControlador() . DS . $request->getMetodo() . ".php";
 			if (is_readable($ruta)) {
 				require_once $ruta;
 			}else{
-				print "Nose encontro la ruta.";
+				print "No se encontro nada.";
 			}
 			
  		}

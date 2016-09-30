@@ -1,6 +1,6 @@
-<?php namespace Controllers;
+<?php namespace Controladores;
 
-	 class homeController
+	 class homeControl
 	 {
 
 	 	public function __construct()
