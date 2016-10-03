@@ -1,4 +1,7 @@
-<?php namespace Modelos;
+<?php 
+namespace App\Models;
+
+use App\Models\Connection as Connection;
 
 /**
 * 
@@ -18,7 +21,7 @@ class Usuario
 	
 	function __construct()
 	{
-		$this->con = new Conexion();
+		$this->con = new Connection();
 	}
 
 	public function set($atributo, $contenido)
