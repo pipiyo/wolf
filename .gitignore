@@ -1,3 +1,4 @@
 /App/Models/Connection.php
 /Config/Config.php
 /vendor/
+composer.lock
