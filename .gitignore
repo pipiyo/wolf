@@ -1,8 +1,5 @@
 /App/Models/Connection.php
 /Config/Config.php
 /vendor/
-<<<<<<< HEAD
-composer.lock
-=======
 /node_modules/
->>>>>>> 3a1c7760c154888719d101799ce49f9708db51ee
+/.sass-cache/
