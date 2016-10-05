@@ -6,13 +6,40 @@
         <div id="content">{{  tittle  }}</div>
         <div id="content">
         	<form action="" method="post">
-        		<input type="text" name="name">
-        		<input type="pass" name="pass">
-                <input type="text" name="name">
-                <input type="pass" name="pass">
-                <input type="text" name="name">
-                <input type="pass" name="pass">
-        		<input type="submit" name="submit">
+            <div>
+            		<label>Tipo</label> 
+                    <select name="categoria">
+                        {% for servicio in servicios %}
+                            <option>{{ servicio }}</option>
+                        {% endfor %}
+                    </select>
+            		<label>Realizador</label> <input type="pass" name="pass" value="{{  realizador  }}">
+            </div>
+            <div>
+                    <label>Fecha inicio</label> <input type="text" name="name">
+                    <label>Fecha entrega</label> <input type="pass" name="pass">
+            </div>
+            <div>
+                    <label>Descripcion</label> <input type="text" name="name">
+                    <label>Observacion</label> <input type="pass" name="pass">
+            </div>
+            <div>
+                    <label>Dias</label> <input type="text" name="name">
+                    <label>Reclamos</label> <input type="pass" name="pass">
+            </div>
+            <div>
+                    <label>Supervisor</label> <input type="text" name="name">
+                    <label>Categoria</label> 
+                    <select name="categoria">
+                        {% for categoria in categorias %}
+                            <option>{{ categoria }}</option>
+                        {% endfor %}
+                    </select>
+            </div>
+            <div>
+            		<input type="submit" name="submit">
+            </div>
+
         	</form>
         </div>
         <div id="footer">

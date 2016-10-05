@@ -33,12 +33,12 @@ trait HomeRoutes
 
 		});
 
-        $this->router->get('home', function() {
+        $this->router->get('/home', function() {
             echo $this->twig->render('Home/home.html', array('name' => $_SESSION['user_type'] ));
         });
 
 
-        $this->router->get('logout', function() {
+        $this->router->get('/logout', function() {
 		    $this->controller = new HomeController();
 		    $this->controller->logout();
         });

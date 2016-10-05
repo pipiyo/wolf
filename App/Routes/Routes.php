@@ -26,6 +26,12 @@ class Routes extends RoutesTemplate
 
         self::getServicio();
 
+
+        $this->router->set404(function() {
+            header('HTTP/1.1 404 Not Found');
+            echo $this->twig->render('Servicio/ingresar.html', array('tittle' => 'NO SE ENCONTRO EL LINK' ));
+        });
+
         $this->router->run();
 
     }
