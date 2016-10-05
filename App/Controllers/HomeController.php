@@ -1,45 +1,54 @@
 <?php 
 namespace App\Controllers;
 
+use App\Controllers\ControllerTemplate;
+use App\Controllers\Auth\Auth;
 use App\Models\Usuario as Usuario;
 
 	 class HomeController
 	 {
-	 	private $usuario;
-	 	private $request;
+	 	
+	 	private $ct;
+	 	private $auth;
 	 	private $row;
-	 	private $view;
-	 	private $data = array();
+	 	private $usuario;
 
 	 	public function __construct()
 	 	{
+	 		$this->ct = new ControllerTemplate();
+	 		$this->auth = new Auth();
 			$this->usuario = new Usuario();
 	 	}
 
-	 	public function index()
+	 	public function login()
 	 	{
 
 	 		$this->usuario->set('NOMBRE_USUARIO', $_POST['name']);
-	 		$this->request = $this->usuario->get('NOMBRE_USUARIO');
-	 		$this->row = mysqli_fetch_array($this->request);
-
+	 		$this->row = $this->usuario->getFor('NOMBRE_USUARIO');
 
 	 		if (crypt($_POST['pass'], $this->row['PASS']) == $this->row['PASS'] || $this->row['PASS'] == $_POST['pass'])
 	 		{
-	 			$this->view = 'Home/home.html';
+	 			$this->auth->newUser($this->row);
+	 			header("Location: " . URL . "home");
+	 			exit(); 
 	 		}else{
-	 			$this->view = 'login.html';
+	 			$this->ct->render('login.html');
 	 		}
 
-
-
-	 		$this->data['data'] = $this->row;
-	 		$this->data['view'] = $this->view;
-	 		return $this->data;
 	 	}
 
 
-	 }
+	 	public function logout()
+	 	{
 
+	 			$this->auth->logout();
+	 			header("Location: " . URL . "login");
+	 			exit(); 
+
+	 	}
+
+
+
+	 }
 
 ?>

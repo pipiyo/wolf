@@ -5,6 +5,8 @@ use App\Controllers\HomeController as HomeController;
 
 trait HomeRoutes
 {
+
+
     public function getHome()
     {
 
@@ -15,25 +17,30 @@ trait HomeRoutes
 		        echo $this->twig->render('login.html');
 		    });
 
+		    $this->router->get('/login', function() {
+		        echo $this->twig->render('login.html');
+		    });
+
 		    $this->router->post('/', function() {
 		    	$this->controller = new HomeController();
-		    	$this->method = $this->controller->index();
-		        
+		    	$this->method = $this->controller->login();
+		    });
 
-		        echo $this->twig->render($this->method['view'], $this->method['data']);
-
-
-		        //header("Location: " . URL . "home"); 
- 				//exit();
-
+		    $this->router->post('/login', function() {
+		    	$this->controller = new HomeController();
+		    	$this->method = $this->controller->login();
 		    });
 
 		});
 
-
-
         $this->router->get('/home', function() {
-            echo $this->twig->render('Home/home.html', array('TIPO_USUARIO' => 'ENTRANDO A HOME'));
+            echo $this->twig->render('Home/home.html', array('name' => $_SESSION['user_type'] ));
+        });
+
+
+        $this->router->get('/logout', function() {
+		    $this->controller = new HomeController();
+		    $this->controller->logout();
         });
 
 

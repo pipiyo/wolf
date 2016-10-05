@@ -12,7 +12,7 @@ class RoutesTemplate
 
     public function __construct()
     {
-
+        
         $this->router = new \Bramus\Router\Router();
         $this->loader = new \Twig_Loader_Filesystem('Resources/Views');
         $this->twig = new \Twig_Environment($this->loader);
