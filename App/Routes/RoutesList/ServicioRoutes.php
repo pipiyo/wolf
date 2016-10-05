@@ -1,16 +1,16 @@
 <?php
 namespace App\Routes\RoutesList;
 
-use App\Controllers\HomeController as HomeController;
+//use App\Controllers\HomeController as HomeController;
 
-trait HomeRoutes
+trait ServicioRoutes
 {
 
 
-    public function getHome()
+    public function getServicio()
     {
 
-
+/*
 		$this->router->mount('', function() {
 
 		    $this->router->get('/', function() {
@@ -32,15 +32,11 @@ trait HomeRoutes
 		    });
 
 		});
-
-        $this->router->get('home', function() {
-            echo $this->twig->render('Home/home.html', array('name' => $_SESSION['user_type'] ));
-        });
+*/
 
 
-        $this->router->get('logout', function() {
-		    $this->controller = new HomeController();
-		    $this->controller->logout();
+        $this->router->get('home/servicio', function() {
+            echo $this->twig->render('Servicio/ingresar.html', array('tittle' => 'Aqui ingresar Servicio' ));
         });
 
 

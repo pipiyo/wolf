@@ -3,18 +3,17 @@ namespace App\Models;
 
 use App\Models\Database as Db;
 
-class Usuario
+class Sub_servicio
 {
 	private $sqlquery;
 	private $data;
 
-	private $CODIGO_USUARIO;
-	private $NOMBRE_USUARIO;
-	private $PASS;
-	private $TIPO_USUARIO;
-	private $FECHA_INGRESO;
-	private $ACTIVO;
-	private $RUT;
+	private $id_sub_servicio;
+	private $nombre;
+	private $descripcion;
+	private $fecha_ingreso;
+	private $fecha_entrega;
+	private $CODIGO_SERVICIO;
 	
 	public function __construct()
 	{
@@ -34,7 +33,7 @@ class Usuario
 
 	public function all(){
 
-		$sql = "SELECT * FROM USUARIO";
+		$sql = "SELECT * FROM sub_servicio";
 		$datos = $this->bd->querySimple($sql);
 		return $datos;
 
@@ -42,7 +41,7 @@ class Usuario
 
 	public function getFor($attribute)
 	{
-		$this->sqlquery = "SELECT * FROM USUARIO WHERE $attribute = '{$this->$attribute}'";
+		$this->sqlquery = "SELECT * FROM sub_servicio WHERE $attribute = '{$this->$attribute}'";
 		$this->data = $this->bd->querySimple($this->sqlquery);
 		return $this->data;
 	}
